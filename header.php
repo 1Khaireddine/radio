@@ -18,6 +18,8 @@
 	<link rel="profile" href="https://gmpg.org/xfn/11">
 
 	<?php wp_head(); ?>
+	<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+
 </head>
 
 <body <?php body_class(); ?>>
@@ -57,3 +59,24 @@
 			?>
 		</nav><!-- #site-navigation -->
 	</header><!-- #masthead -->
+
+	<section class="slick">
+		<?php
+			$args = array( 'post_type' => 'slider', 'posts_per_page' => 10 );
+			$the_query = new WP_Query( $args );
+			?>
+			<?php if ( $the_query->have_posts() ) : ?>
+			<?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
+			<div>
+				<h2><?php the_title(); ?></h2>
+				<div class="entry-content">
+				<?php the_content(); ?>
+				<?= get_the_post_thumbnail(); ?>
+				</div>
+			</div>
+			<?php endwhile;
+			wp_reset_postdata(); ?>
+			<?php else:  ?>
+			<p><?php _e( 'Sorry, no posts matched your criteria.' ); ?></p>
+		<?php endif; ?>
+	</section>
