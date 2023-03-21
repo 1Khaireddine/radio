@@ -15,9 +15,9 @@
 get_header();
 ?>
 
-	<main id="primary" class="site-main">
-
-		<?php
+<div class="container">
+	<div class="row">
+	<?php
 		if ( have_posts() ) :
 
 			if ( is_home() && ! is_front_page() ) :
@@ -49,9 +49,7 @@ get_header();
 
 		endif;
 		?>
-
-	</main><!-- #main -->
-
+	</div>
+</div>
 <?php
-get_sidebar();
 get_footer();

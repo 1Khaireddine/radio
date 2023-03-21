@@ -46,12 +46,6 @@ function radio_salam_setup() {
 		*/
 	add_theme_support( 'post-thumbnails' );
 
-	// This theme uses wp_nav_menu() in one location.
-	register_nav_menus(
-		array(
-			'menu-1' => esc_html__( 'Primary', 'radio_salam' ),
-		)
-	);
 
 	/*
 		* Switch default core markup for search form, comment form, and comments
@@ -122,31 +116,32 @@ add_action( 'after_setup_theme', 'radio_salam_content_width', 0 );
 function radio_salam_widgets_init() {
 
     register_sidebar( array(
-        'name'          => __( 'Footer area logo', 'radio_salam' ),
-        'id'            => 'footer-area-logo',
-        'before_widget' => '<div id="%1$s" class="footer-area-logo-widget %2$s">',
+        'name'          => __( 'On Air', 'radio_salam' ),
+        'id'            => 'on-air',
+        'before_widget' => '<div id="%1$s" class="on-air %2$s">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h3 class="on-air-title">',
+        'after_title'   => '</h3>',
+    ) );
+
+    register_sidebar( array(
+        'name'          => __( 'Footer area left', 'radio_salam' ),
+        'id'            => 'footer-area-left',
+        'before_widget' => '<div id="%1$s" class="logo-footer %2$s">',
         'after_widget'  => '</div>',
         'before_title'  => '<h3 class="footer-area-logo-title">',
         'after_title'   => '</h3>',
     ) );
 
     register_sidebar( array(
-        'name'          => __( 'Footer area 1', 'radio_salam' ),
-        'id'            => 'footer-area-1',
-        'before_widget' => '<div id="%1$s" class="footer-area-1-widget %2$s">',
+        'name'          => __( 'Footer area right', 'radio_salam' ),
+        'id'            => 'footer-area-right',
+        'before_widget' => '<div id="%1$s" class="copyright-footer %2$s">',
         'after_widget'  => '</div>',
         'before_title'  => '<h3 class="footer-area-1-widget-title">',
         'after_title'   => '</h3>',
     ) );
 
-    register_sidebar( array(
-        'name'          => __( 'Footer area 2', 'radio_salam' ),
-        'id'            => 'footer-area-2',
-        'before_widget' => '<div id="%1$s" class="footer-area-2-widget %2$s">',
-        'after_widget'  => '</div>',
-        'before_title'  => '<h3 class="footer-area-2-widget-title">',
-        'after_title'   => '</h3>',
-    ) );
 }
 
 add_action( 'widgets_init', 'radio_salam_widgets_init' );
@@ -205,22 +200,29 @@ function custom_post_type() {
 	register_post_type( 'slider', $args );
 
 }
+
 add_action( 'init', 'custom_post_type', 0 );
 
-/**
- * Enqueue scripts and styles.
- */
-function radio_salam_scripts() {
-	wp_enqueue_style( 'radio_salam-style', get_stylesheet_uri(), array(), _S_VERSION );
-	wp_style_add_data( 'radio_salam-style', 'rtl', 'replace' );
-
-	wp_enqueue_script( 'radio_salam-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
-
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
-	}
+if ( ! file_exists( get_template_directory() . '/class-wp-bootstrap-navwalker.php' ) ) {
+	return new WP_Error( 'class-wp-bootstrap-navwalker-missing', __( 'It appears the class-wp-bootstrap-navwalker.php file may be missing.', 'wp-bootstrap-navwalker' ) );
+} else {
+	require_once get_template_directory() . '/class-wp-bootstrap-navwalker.php';
 }
-add_action( 'wp_enqueue_scripts', 'radio_salam_scripts' );
+
+// This theme uses wp_nav_menu() in one location.
+register_nav_menus(
+	array(
+		'navbar' => esc_html__( 'Primary', 'radio_salam' ),
+	)
+);
+
+/**
+ * Register Custom Navigation Walker
+ */
+function register_navwalker(){
+	require_once get_template_directory() . '/class-wp-bootstrap-navwalker.php';
+}
+add_action( 'after_setup_theme', 'register_navwalker' );
 
 /**
  * Implement the Custom Header feature.
@@ -249,15 +251,41 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
-function shapeSpace_include_custom_jquery() {
-
-    wp_deregister_script('jquery');
-    wp_enqueue_script('jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js', array(), null, true);
-
+/**
+ * External CSS
+ */
+function enqueue_external_styles(){
+	wp_enqueue_style('bootstrap_css', '//stackpath.bootstrapcdn.com/bootstrap/4.4.0/css/bootstrap.min.css');
+	wp_enqueue_style('slick_css', 'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css');
+	wp_enqueue_style('slick_theme_css', 'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css');
 }
-add_action('wp_enqueue_scripts', 'shapeSpace_include_custom_jquery');
+add_action( 'wp_enqueue_scripts', 'enqueue_external_styles' );
 
-function wpbootstrap_enqueue_styles() {
-    wp_enqueue_style( 'bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css' );
+/**
+ * External JAVASCRIPT
+ */
+function enqueue_external_scripts() {
+	wp_enqueue_script( 'bootstrap_jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js', array(), null, true );
+	wp_enqueue_script( 'iframe_jquery', 'https://raw.githubusercontent.com/cmlenz/jquery-iframe-transport/master/jquery.iframe-transport.js', array(), null, true );
+	wp_enqueue_script( 'bootstrap_popper', '//cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js', array(), '1.14.7', true );
+	wp_enqueue_script( 'bootstrap_javascript', '//stackpath.bootstrapcdn.com/bootstrap/4.4.0/js/bootstrap.min.js', array(), '4.3.1', true );
+	wp_enqueue_script( 'slick', 'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js', array(), null, true );
 }
-add_action('wp_enqueue_scripts', 'wpbootstrap_enqueue_styles');
+add_action( 'wp_enqueue_scripts', 'enqueue_external_scripts' );
+
+/**
+ * Enqueue scripts and styles.
+ */
+function radio_salam_scripts() {
+	wp_enqueue_style( 'radio_salam-style', get_stylesheet_uri(), array(), _S_VERSION );
+	wp_style_add_data( 'radio_salam-style', 'rtl', 'replace' );
+
+	wp_enqueue_script( 'radio_salam-navigation', get_template_directory_uri() . '/js/script.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'radio_salam-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
+
+	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+		wp_enqueue_script( 'comment-reply' );
+	}
+}
+add_action( 'wp_enqueue_scripts', 'radio_salam_scripts' );
+

@@ -14,14 +14,11 @@
 	<footer id="colophon" class="site-footer">
 		<div class="container">
             <div class="row">
-                <div class="col-md-4">
-                    <?php dynamic_sidebar( 'footer-area-logo' ); ?>
+                <div class="col-md-6">
+                    <?php dynamic_sidebar( 'footer-area-left' ); ?>
                 </div>
-                <div class="col-md-4">
-                    <?php dynamic_sidebar( 'footer-area-1' ); ?>
-                </div>
-                <div class="col-md-4">
-                    <?php dynamic_sidebar( 'footer-area-2' ); ?>
+                <div class="col-md-6">
+                    <?php dynamic_sidebar( 'footer-area-right' ); ?>
                 </div>
             </div>
         </div>
@@ -29,7 +26,6 @@
 </div><!-- #page -->
 
 <?php wp_footer(); ?>
-<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
 </body>
 </html>
