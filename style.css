@@ -66,7 +66,7 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
  * 1. Correct the line height in all browsers.
  * 2. Prevent adjustments of font size after orientation changes in iOS.
  */
- html {
+html {
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
 }
@@ -93,8 +93,9 @@ main {
  * `article` contexts in Chrome, Firefox, and Safari.
  */
 h1 {
-  font-size: 2em;
-  margin: 0.67em 0;
+  font-size: 2.3em;
+  color: #444;
+  font-weight: 600;
 }
 
 /* Grouping content
@@ -403,7 +404,7 @@ select,
 optgroup,
 textarea {
   color: #404040;
-	font-family: 'Open Sans', sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-size: 1rem;
   line-height: 1.5;
 }
@@ -966,7 +967,63 @@ textarea {
 
 /*************************** khaireddine ***************************/
 
-.main-slider {
+.main-header {
+  /**/
+}
+
+.main-header .cover-navbar {
+  /**/
+  padding: 10px 12px;
+}
+
+.main-header .cover-navbar > div {
+  /**/
+  max-width: 1200px;
+  width: 100%;
+  margin: auto;
+}
+
+.main-header .cover-navbar .main-navbar {
+  /**/
+}
+
+.main-header .cover-navbar .main-navbar > div {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.main-header .cover-navbar .main-navbar .custom-logo-link {
+  /**/
+}
+
+.main-header .cover-navbar .menu-navbar-container {
+  /**/
+}
+
+.main-header .cover-navbar .menu-navbar-container .menu {
+  /**/
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.main-header .cover-navbar .menu-navbar-container .menu .menu-item {
+  /**/
+}
+
+.main-header .cover-navbar .menu-navbar-container .menu .menu-item a {
+  display: inline-block;
+  line-height: 48px;
+  padding: 0 10px;
+  color: #444;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+#main-slider.main-slider {
+  margin-bottom: 0;
   position: relative;
 }
 
@@ -1033,7 +1090,7 @@ textarea {
   font-weight: 300;
 }
 
-.main-slider .slide-description .slide-frequency .material-symbols-outlined{
+.main-slider .slide-description .slide-frequency .material-symbols-outlined {
   font-size: 1.75rem;
   margin-left: 10px;
 }
@@ -1045,7 +1102,7 @@ textarea {
   width: 100%;
   object-fit: cover;
   object-position: center;
-	height: 320px;
+  height: 320px;
 }
 
 .main-slider .slick-dots {
@@ -1055,6 +1112,73 @@ textarea {
 .main-slider .slick-active {
   position: relative;
 }
+
+.main-slider .slick-dots button {
+  width: 14px;
+  height: 14px;
+  padding: 0;
+}
+
+.main-slider .slick-dots button:before {
+  width: 14px;
+  height: 14px;
+  padding: 0;
+  background: orange;
+  font-size: 0;
+  border-radius: 50%;
+}
+
+.main-slider #slick-slide-control01 {
+  position: relative;
+}
+
+.main-slider .slick-dots {
+  bottom: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-slider .slick-dots > li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  height: auto;
+}
+
+.main-slider #play-onair {
+  outline: none;
+  padding: 0;
+  border: none;
+  width: 114px;
+  height: 114px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+}
+
+.main-slider #play-onair span:last-child,
+.main-slider #play-onair.playing span:first-child {
+  display: none;
+}
+
+.main-slider #play-onair.playing span:last-child {
+  display: block;
+}
+
+.main-slider #play-onair span {
+  color: #fff;
+  font-size: 7rem;
+  font-weight: 600;
+}
+
+#audio-onair {
+  display: none;
+}
+
+/*************** FOOTER ****************/
 
 .site-footer {
   background: #12169d;
@@ -1073,40 +1197,40 @@ textarea {
 }
 
 @media (min-width: 768px) {
-	.main-slider .attachment-post-thumbnail {
-		height: 420px;
-	}
+  .main-slider .attachment-post-thumbnail {
+    height: 420px;
+  }
 }
 
 @media (min-width: 990px) {
-	.main-slider .attachment-post-thumbnail {
-		height: 480px;
-	}
+  .main-slider .attachment-post-thumbnail {
+    height: 480px;
+  }
 }
 
 @media (min-width: 1200px) {
-	.main-slider .cover-inner .slide-description {
-		max-width: 640px;
-		width: 100%;
-	}
+  .main-slider .cover-inner .slide-description {
+    max-width: 640px;
+    width: 100%;
+  }
 
-	.main-slider .slide-description .slide-city-name {
-		font-size: 3.3rem;
-		line-height: normal;
-	}
+  .main-slider .slide-description .slide-city-name {
+    font-size: 3.3rem;
+    line-height: normal;
+  }
 
-	.main-slider .slide-description .slide-frequency {
-		font-size: 4rem;
-		line-height: normal;
-	}
+  .main-slider .slide-description .slide-frequency {
+    font-size: 4rem;
+    line-height: normal;
+  }
 
-	.main-slider .attachment-post-thumbnail {
-		height: 580px;
-	}
+  .main-slider .attachment-post-thumbnail {
+    height: 580px;
+  }
 }
 
 @media (min-width: 1440px) {
-	.main-slider .attachment-post-thumbnail {
-		height: 680px;
-	}
+  .main-slider .attachment-post-thumbnail {
+    height: 680px;
+  }
 }

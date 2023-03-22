@@ -30,31 +30,19 @@
 	<header class="main-header">
 		<div class="cover-navbar">
 			<div>
-
-				<nav class="navbar navbar-expand-md navbar-light bg-light" role="navigation">
-					<div class="container">
+				<nav class="main-navbar" role="navigation">
+					<div>
 						<?= the_custom_logo(); ?>
-						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-controls="bs-example-navbar-collapse-1" aria-expanded="false">
-								<span class="navbar-toggler-icon"></span>
-						</button>
 							<?php
 							wp_nav_menu( array(
 									'theme_location'    => 'navbar',
-									'depth'             => 2,
-									'container'         => 'div',
-									'container_class'   => 'collapse navbar-collapse ml-auto',
-									'container_id'      => 'bs-example-navbar-collapse-1',
-									'menu_class'        => 'nav navbar-nav',
-									'fallback_cb'       => 'WP_Bootstrap_Navwalker::fallback',
-									'walker'            => new WP_Bootstrap_Navwalker(),
 							) );
 							?>
 					</div>
 				</nav>
-
 			</div>
 		</div>
 		<?php get_template_part( 'template-parts/content', 'slider' ); ?>
-		<?php dynamic_sidebar( 'on-air' ); ?>
 	</header>
+	<audio controls="controls" id="audio-onair" src="https://radiosalam.ice.infomaniak.ch/radiosalam-128.mp3" style="width:270px; height:50px"></audio>
 

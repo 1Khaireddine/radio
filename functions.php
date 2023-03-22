@@ -280,7 +280,9 @@ function radio_salam_scripts() {
 	wp_enqueue_style( 'radio_salam-style', get_stylesheet_uri(), array(), _S_VERSION );
 	wp_style_add_data( 'radio_salam-style', 'rtl', 'replace' );
 
-	wp_enqueue_script( 'radio_salam-navigation', get_template_directory_uri() . '/js/script.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'radio_salam-play', get_template_directory_uri() . '/js/play.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'radio_salam-onair', get_template_directory_uri() . '/js/onair.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'radio_salam-script', get_template_directory_uri() . '/js/script.js', array(), _S_VERSION, true );
 	wp_enqueue_script( 'radio_salam-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
