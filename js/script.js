@@ -5,9 +5,9 @@ $(document).ready(function () {
     fade: true,
     speed: 1000,
     arrows: false,
-    autoplay: false,
+    autoplay: true,
     draggable: true,
-    autoplaySpeed: 5000,
+    autoplaySpeed: 4000,
   });
 
   var onAir = $('#audio-onair')[0];

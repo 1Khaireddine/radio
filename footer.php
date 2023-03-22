@@ -14,10 +14,10 @@
 	<footer id="colophon" class="site-footer">
 		<div class="container">
             <div class="row">
-                <div class="col-md-6">
+                <div class="align-items-center col-md-6 d-flex justify-content-md-start justify-content-sm-center">
                     <?php dynamic_sidebar( 'footer-area-left' ); ?>
                 </div>
-                <div class="col-md-6">
+                <div class="align-items-center col-md-6 d-flex justify-content-md-end justify-content-sm-center">
                     <?php dynamic_sidebar( 'footer-area-right' ); ?>
                 </div>
             </div>

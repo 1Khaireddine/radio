@@ -9,34 +9,34 @@
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header">
+<article id="post-<?php the_ID(); ?>" <?php post_class(); ?> class="col-12">
+	<header class="col-12">
 		<?php
 		if ( is_singular() ) :
-			the_title( '<h1 class="entry-title">', '</h1>' );
+			the_title( '<h1 class="main-title">', '</h1>' );
 		else :
-			the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
+			the_title( '<h2 class="title-article-listing"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
 		endif;
 
 		if ( 'post' === get_post_type() ) :
 			?>
-			<div class="entry-meta">
-				<?php
-				radio_salam_posted_on();
-				radio_salam_posted_by();
-				?>
-			</div><!-- .entry-meta -->
 		<?php endif; ?>
-	</header><!-- .entry-header -->
+	</header>
 
-	<?php radio_salam_post_thumbnail(); ?>
-
-	<div class="entry-content">
+	<div class="col-12">
 		<?php
+		$file = get_field('broadcast');
+		if( $file ):
+			$url = wp_get_attachment_url( $file );?>
+			<div class="cover-broadcast-player mt-3 mb-3">
+				<audio class="broadcast-player" controls="controls" src="<?= $url ?>"></audio>
+			</div>
+			<?php endif;
+		if (is_singular()):
+		radio_salam_post_thumbnail();
 		the_content(
 			sprintf(
 				wp_kses(
-					/* translators: %s: Name of current post. Only visible to screen readers */
 					__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'radio_salam' ),
 					array(
 						'span' => array(
@@ -47,7 +47,7 @@
 				wp_kses_post( get_the_title() )
 			)
 		);
-
+		endif;
 		wp_link_pages(
 			array(
 				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'radio_salam' ),
@@ -55,9 +55,5 @@
 			)
 		);
 		?>
-	</div><!-- .entry-content -->
-
-	<footer class="entry-footer">
-		<?php radio_salam_entry_footer(); ?>
-	</footer><!-- .entry-footer -->
-</article><!-- #post-<?php the_ID(); ?> -->
+	</div>
+</article>

@@ -1,25 +1,17 @@
 /*!
-Theme Name: radio_salam
-Theme URI: http://underscores.me/
-Author: Underscores.me
-Author URI: http://underscores.me/
-Description: Description
+Theme Name: Radio Salam
+Theme URI: https://radiosalam.com/
+Author: radiosalam.com/
+Author URI: https://radiosalam.com/
+Description: Née en 1991, Radio Salam s’est imposée dans le paysage radiophonique lyonnais, comme la première radio associative par le nombre de ses auditeurs.
 Version: 1.0.0
 Tested up to: 5.4
 Requires PHP: 5.6
 License: GNU General Public License v2 or later
 License URI: LICENSE
 Text Domain: radio_salam
-Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready
+Tags: Radio
 
-This theme, like WordPress, is licensed under the GPL.
-Use it to make something cool, have fun, and share what you've learned.
-
-radio_salam is based on Underscores https://underscores.me/, (C) 2012-2020 Automattic, Inc.
-Underscores is distributed under the terms of the GNU GPL v2 or later.
-
-Normalizing styles have been helped along thanks to the fine work of
-Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 */
 
 /*--------------------------------------------------------------
@@ -496,8 +488,8 @@ ol {
   list-style: decimal;
 }
 
-li > ul,
-li > ol {
+li>ul,
+li>ol {
   margin-bottom: 0;
   margin-left: 1.5em;
 }
@@ -674,8 +666,8 @@ textarea {
   top: 0;
 }
 
-.main-navigation ul ul li:hover > ul,
-.main-navigation ul ul li.focus > ul {
+.main-navigation ul ul li:hover>ul,
+.main-navigation ul ul li.focus>ul {
   display: block;
   left: auto;
 }
@@ -684,8 +676,8 @@ textarea {
   width: 200px;
 }
 
-.main-navigation ul li:hover > ul,
-.main-navigation ul li.focus > ul {
+.main-navigation ul li:hover>ul,
+.main-navigation ul li.focus>ul {
   left: auto;
 }
 
@@ -746,9 +738,7 @@ textarea {
 }
 
 .post,
-.page {
-  margin: 0 0 1.5em;
-}
+.page {}
 
 .updated:not(.published) {
   display: none;
@@ -976,7 +966,7 @@ textarea {
   padding: 10px 12px;
 }
 
-.main-header .cover-navbar > div {
+.main-header .cover-navbar>div {
   /**/
   max-width: 1200px;
   width: 100%;
@@ -987,7 +977,7 @@ textarea {
   /**/
 }
 
-.main-header .cover-navbar .main-navbar > div {
+.main-header .cover-navbar .main-navbar>div {
   display: flex;
   width: 100%;
   justify-content: space-between;
@@ -1020,6 +1010,11 @@ textarea {
   color: #444;
   font-weight: 600;
   font-size: 1rem;
+  text-decoration: none;
+}
+
+.main-header .cover-navbar .menu-navbar-container .menu .menu-item a:hover {
+  color: #f67412;
 }
 
 #main-slider.main-slider {
@@ -1044,11 +1039,9 @@ textarea {
   top: 0;
   z-index: 1;
   position: absolute;
-  background: linear-gradient(
-    45deg,
-    rgb(18 22 157 / 90%) 0%,
-    rgb(246 116 18 / 70%) 100%
-  );
+  background: linear-gradient(45deg,
+      rgb(18 22 157 / 90%) 0%,
+      rgb(246 116 18 / 70%) 100%);
 }
 
 .main-slider .slick-track {
@@ -1059,7 +1052,7 @@ textarea {
 
 .main-slider .cover-inner .slide-description {
   left: 50%;
-  top: 50%;
+  bottom: 80px;
   right: 0;
   color: #fff;
   z-index: 2;
@@ -1069,13 +1062,13 @@ textarea {
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  transform: translate(-50%, -50%);
+  transform: translateX(-50%);
   border-top: 5px solid #f67412;
   border-bottom: 5px solid #f67412;
 }
 
 .main-slider .slide-description .slide-city-name {
-  font-size: 2.2rem;
+  font-size: 1.7rem;
   font-weight: 700;
 }
 
@@ -1139,7 +1132,7 @@ textarea {
   align-items: center;
 }
 
-.main-slider .slick-dots > li {
+.main-slider .slick-dots>li {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1151,12 +1144,15 @@ textarea {
   outline: none;
   padding: 0;
   border: none;
-  width: 114px;
-  height: 114px;
   display: flex;
   align-items: center;
   justify-content: center;
   background: transparent;
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  right: 0;
+  top: 20px;
 }
 
 .main-slider #play-onair span:last-child,
@@ -1170,7 +1166,7 @@ textarea {
 
 .main-slider #play-onair span {
   color: #fff;
-  font-size: 7rem;
+  font-size: 6rem;
   font-weight: 600;
 }
 
@@ -1178,10 +1174,57 @@ textarea {
   display: none;
 }
 
+.main-container {
+  padding: 50px 0;
+}
+
+.main-container p {
+  font-size: 16px;
+  line-height: 26px;
+}
+
+.main-container.home-page .post-thumbnail {
+  position: relative;
+}
+
+.main-container.home-page .post-thumbnail:before,
+.main-container.home-page .post-thumbnail:after {
+  content: "";
+  position: absolute;
+}
+
+.main-container.home-page .post-thumbnail:before {
+  width: 50px;
+  height: 100px;
+  left: -10px;
+  top: -10px;
+  background: #f67412;
+  border-radius: 10px 0 0 0;
+}
+
+.main-container.home-page .post-thumbnail:after {
+  width: 100px;
+  height: 50px;
+  right: -10px;
+  bottom: -10px;
+  z-index: -1;
+  position: absolute;
+  border: 3px solid #383cd0;
+  border-radius: 0 0 10px;
+}
+
+.main-container.home-page .post-thumbnail img {
+  z-index: 0;
+  display: block;
+  position: relative;
+  border-radius: 10px;
+  box-shadow: 0 2px 3px #aaa
+}
+
 /*************** FOOTER ****************/
 
 .site-footer {
-  background: #12169d;
+  background: #e5e5f4;
   padding: 40px 0;
 }
 
@@ -1192,11 +1235,22 @@ textarea {
 }
 
 .site-footer .copyright-footer p {
-  color: #fff;
+  color: #444;
+  font-weight: 300;
+  font-size: 16px;
   margin: 0;
 }
 
 @media (min-width: 768px) {
+
+  .main-slider #play-onair {
+    top: 40px
+  }
+
+  .main-slider .cover-inner .slide-description {
+    bottom: 170px
+  }
+
   .main-slider .attachment-post-thumbnail {
     height: 420px;
   }
@@ -1209,6 +1263,15 @@ textarea {
 }
 
 @media (min-width: 1200px) {
+  .main-container {
+    padding: 80px 0;
+  }
+
+  .main-slider #play-onair {
+    top: 130px
+  }
+
+
   .main-slider .cover-inner .slide-description {
     max-width: 640px;
     width: 100%;
@@ -1230,7 +1293,49 @@ textarea {
 }
 
 @media (min-width: 1440px) {
+  .main-container {
+    padding: 100px 0;
+  }
+
+  .main-slider #play-onair {
+    top: 170px
+  }
+
+  .main-slider .cover-inner .slide-description {
+    bottom: 240px
+  }
+
   .main-slider .attachment-post-thumbnail {
     height: 680px;
+  }
+
+  .main-container.home-page .post-thumbnail {
+    max-width: 480px;
+    width: 100%;
+    height: 580px;
+    margin: 0 0 0 auto
+  }
+
+  .main-container.home-page .post-thumbnail img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .main-container.home-page .post-thumbnail:before {
+    width: 200px;
+    height: 300px;
+    left: -50px;
+    top: -50px;
+    border-radius: 0 0 0 50px;
+  }
+
+  .main-container.home-page .post-thumbnail:after {
+    width: 300px;
+    height: 150px;
+    right: -50px;
+    bottom: -50px;
+    border: 2px solid #383cd0;
+    border-radius: 0 0 50px;
   }
 }
