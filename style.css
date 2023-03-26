@@ -85,7 +85,7 @@ main {
  * `article` contexts in Chrome, Firefox, and Safari.
  */
 h1 {
-  font-size: 2.3em;
+  font-size: 2.2em;
   color: #444;
   font-weight: 600;
 }
@@ -1017,7 +1017,24 @@ textarea {
   color: #f67412;
 }
 
+.cover-main-slider {
+  position: relative;
+}
+
+.cover-main-slider .cover-on-air {
+  z-index: 1;
+  left: 0;
+  top: 60px;
+  width: 100%;
+  position: absolute;
+}
+
+.cover-main-slider .cover-on-air p {
+  display: none;
+}
+
 #main-slider.main-slider {
+  zoom: 1;
   margin-bottom: 0;
   position: relative;
 }
@@ -1263,6 +1280,11 @@ textarea {
 }
 
 @media (min-width: 1200px) {
+
+  .cover-main-slider .cover-on-air {
+    top: 150px;
+  }
+
   .main-container {
     padding: 80px 0;
   }

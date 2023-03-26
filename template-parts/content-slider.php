@@ -3,19 +3,14 @@
   $the_query = new WP_Query( $args );
 ?>
 <div class="cover-main-slider">
+  <div class="cover-on-air">
+    <?php dynamic_sidebar( 'on-air' ); ?>
+  </div>
   <div class="main-slider" id="main-slider">
       <?php if ( $the_query->have_posts() ) : ?>
         <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
         <div class="slide-item">
           <div class="cover-inner">
-            <button id="play-onair" class="play-onair">
-              <span class="material-symbols-outlined">
-                play_circle
-              </span>
-              <span class="material-symbols-outlined">
-                pause_circle
-              </span>
-            </button>
             <div class="slide-description">
               <div class="slide-city-name" id="slide-city-name">
                 <?= the_title(); ?>
@@ -37,7 +32,7 @@
         wp_reset_postdata(); ?>
         <?php else:  ?>
         <div class="empty-slide">
-
+          <?php dynamic_sidebar( 'on-air' ); ?>
         </div>
     <?php endif; ?>
   </div>

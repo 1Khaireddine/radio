@@ -266,7 +266,6 @@ add_action( 'wp_enqueue_scripts', 'enqueue_external_styles' );
  */
 function enqueue_external_scripts() {
 	wp_enqueue_script( 'bootstrap_jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js', array(), null, true );
-	wp_enqueue_script( 'iframe_jquery', 'https://raw.githubusercontent.com/cmlenz/jquery-iframe-transport/master/jquery.iframe-transport.js', array(), null, true );
 	wp_enqueue_script( 'bootstrap_popper', '//cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js', array(), '1.14.7', true );
 	wp_enqueue_script( 'bootstrap_javascript', '//stackpath.bootstrapcdn.com/bootstrap/4.4.0/js/bootstrap.min.js', array(), '4.3.1', true );
 	wp_enqueue_script( 'slick', 'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js', array(), null, true );
@@ -280,8 +279,6 @@ function radio_salam_scripts() {
 	wp_enqueue_style( 'radio_salam-style', get_stylesheet_uri(), array(), _S_VERSION );
 	wp_style_add_data( 'radio_salam-style', 'rtl', 'replace' );
 
-	wp_enqueue_script( 'radio_salam-play', get_template_directory_uri() . '/js/play.js', array(), _S_VERSION, true );
-	wp_enqueue_script( 'radio_salam-onair', get_template_directory_uri() . '/js/onair.js', array(), _S_VERSION, true );
 	wp_enqueue_script( 'radio_salam-script', get_template_directory_uri() . '/js/script.js', array(), _S_VERSION, true );
 	wp_enqueue_script( 'radio_salam-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
 

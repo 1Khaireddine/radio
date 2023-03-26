@@ -44,5 +44,3 @@
 		</div>
 		<?php get_template_part( 'template-parts/content', 'slider' ); ?>
 	</header>
-	<audio controls="controls" id="audio-onair" src="https://radiosalam.ice.infomaniak.ch/radiosalam-128.mp3" style="width:270px; height:50px"></audio>
-
