@@ -1,5 +1,4 @@
 $(document).ready(function () {
-  console.log(true);
   $('.main-slider').slick({
     dots: true,
     fade: true,
